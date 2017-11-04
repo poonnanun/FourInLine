@@ -1,22 +1,30 @@
-# Compiled class file
+*.doc
+*.docx
+.~*
+
+# binaries and temp files
 *.class
+*.swp
+bin/
+build/
+solution/
 
-# Log file
-*.log
+# Ignore Eclipse project files
+.classpath
+.project
+.settings/
 
-# BlueJ files
-*.ctxt
+# Ignore Netbeans project files
+nbproject
+nbbuild/
+nbdist/
+nb-configuration.xml
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# IntelliJ project files
+.idea/
+*.iml
+*.iws
+*.ipr
 
-# Package Files #
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+# MacOS junk
+.DS_Store
