@@ -1,5 +1,6 @@
 package main;
 
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -14,10 +15,19 @@ import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * This programe is four in line game with gui.
+ * In Main menu there is Start,How to play and exit.
+ * This is my first project with gui so this is kind of hard to read.
+ * @author Poonnanun Poonnopathum
+ */
 public class Start {
 
 	private JFrame frmFourInLine;
 
+	public static void main(String[] args){
+		mainMenu();
+	}
 	/**
 	 * Launch the application.
 	 */
