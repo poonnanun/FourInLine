@@ -70,7 +70,7 @@ public class Game {
 				Start.mainMenu();
 			}
 		});
-		mainmenu.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\exit.png"));
+		mainmenu.setIcon(new ImageIcon("src/pic/exit.png"));
 		mainmenu.setBounds(680, 400, 150, 75);
 		frame.getContentPane().add(mainmenu);
 		mainmenu.setVisible(false);
@@ -82,13 +82,13 @@ public class Game {
 				gameFrame();
 			}
 		});
-		restart.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\restart.png"));
+		restart.setIcon(new ImageIcon("src/pic/restart.png"));
 		restart.setBounds(450, 400, 150, 75);
 		frame.getContentPane().add(restart);
 		restart.setVisible(false);
 		
 		winpopup = new JLabel("");
-		winpopup.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\player1.png"));
+		winpopup.setIcon(new ImageIcon("src/pic/player1.png"));
 		winpopup.setBackground(Color.GRAY);
 		winpopup.setBounds(390, 241, 500, 300);
 		frame.getContentPane().add(winpopup);
@@ -108,12 +108,12 @@ public class Game {
 		}
 		
 		Showcoin1 = new JLabel("");
-		Showcoin1.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\blue.png"));
+		Showcoin1.setIcon(new ImageIcon("src/pic/blue.png"));
 		Showcoin1.setBounds(491, 20, 60, 60);
 		frame.getContentPane().add(Showcoin1);
 		
 		Showcoin2 = new JLabel("");
-		Showcoin2.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\blue.png"));
+		Showcoin2.setIcon(new ImageIcon("src/pic/blue.png"));
 		Showcoin2.setBounds(732, 20, 60, 60);
 		frame.getContentPane().add(Showcoin2);
 		
@@ -149,7 +149,7 @@ public class Game {
 				Start.mainMenu();
 			}
 		});
-		back.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\back.png"));
+		back.setIcon(new ImageIcon("src/pic/back.png"));
 		back.setBounds(20, 20, 50, 50);
 		frame.getContentPane().add(back);
 		
@@ -164,7 +164,7 @@ public class Game {
 				}
 			}
 		});
-		surrender.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\surrender.png"));
+		surrender.setIcon(new ImageIcon("src/pic/surrender.png"));
 		surrender.setBounds(20, 108, 180, 50);
 		frame.getContentPane().add(surrender);
 		
@@ -180,7 +180,7 @@ public class Game {
 		drop1.setFocusPainted(false);
 		drop1.setBorderPainted(false);
 		drop1.setForeground(null);
-		drop1.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\drop.png"));
+		drop1.setIcon(new ImageIcon("src/pic/drop.png"));
 		drop1.setBackground(SystemColor.window);
 		drop1.setBounds(291, 85, 100, 50);
 		frame.getContentPane().add(drop1);
@@ -196,7 +196,7 @@ public class Game {
 		drop2.setFocusPainted(false);
 		drop2.setBorderPainted(false);
 		drop2.setForeground(null);
-		drop2.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\drop.png"));
+		drop2.setIcon(new ImageIcon("src/pic/drop.png"));
 		drop2.setBackground(SystemColor.window);
 		drop2.setBounds(391, 85, 100, 50);
 		frame.getContentPane().add(drop2);
@@ -212,7 +212,7 @@ public class Game {
 		drop3.setFocusPainted(false);
 		drop3.setBorderPainted(false);
 		drop3.setForeground(null);
-		drop3.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\drop.png"));
+		drop3.setIcon(new ImageIcon("src/pic/drop.png"));
 		drop3.setBackground(SystemColor.window);
 		drop3.setBounds(491, 85, 100, 50);
 		frame.getContentPane().add(drop3);
@@ -228,7 +228,7 @@ public class Game {
 		drop4.setFocusPainted(false);
 		drop4.setBorderPainted(false);
 		drop4.setForeground(null);
-		drop4.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\drop.png"));
+		drop4.setIcon(new ImageIcon("src/pic/drop.png"));
 		drop4.setBackground(SystemColor.window);
 		drop4.setBounds(591, 85, 100, 50);
 		frame.getContentPane().add(drop4);
@@ -244,7 +244,7 @@ public class Game {
 		drop5.setFocusPainted(false);
 		drop5.setBorderPainted(false);
 		drop5.setForeground(null);
-		drop5.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\drop.png"));
+		drop5.setIcon(new ImageIcon("src/pic/drop.png"));
 		drop5.setBackground(SystemColor.window);
 		drop5.setBounds(691, 85, 100, 50);
 		frame.getContentPane().add(drop5);
@@ -260,7 +260,7 @@ public class Game {
 		drop6.setFocusPainted(false);
 		drop6.setBorderPainted(false);
 		drop6.setForeground(null);
-		drop6.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\drop.png"));
+		drop6.setIcon(new ImageIcon("src/pic/drop.png"));
 		drop6.setBackground(SystemColor.window);
 		drop6.setBounds(791, 85, 100, 50);
 		frame.getContentPane().add(drop6);
@@ -276,30 +276,30 @@ public class Game {
 		drop7.setFocusPainted(false);
 		drop7.setBorderPainted(false);
 		drop7.setForeground(null);
-		drop7.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\drop.png"));
+		drop7.setIcon(new ImageIcon("src/pic/drop.png"));
 		drop7.setBackground(SystemColor.window);
 		drop7.setBounds(891, 85, 100, 50);
 		frame.getContentPane().add(drop7);
 		
 		JLabel board = new JLabel("New label");
-		board.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\board2.png"));
+		board.setIcon(new ImageIcon("src/pic/board2.png"));
 		board.setBounds(240, 120, 800, 550);
 		frame.getContentPane().add(board);
 		
 		JLabel background = new JLabel("New label");
-		background.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\game.png"));
+		background.setIcon(new ImageIcon("src/pic/game.png"));
 		background.setBounds(0, 0, 1274, 685);
 		frame.getContentPane().add(background);
 	}
 	public static void turnBase1(){
 		player.setText("Player 1");
-		Showcoin2.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\blue.png"));
-		Showcoin1.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\blue.png"));
+		Showcoin2.setIcon(new ImageIcon("src/pic/blue.png"));
+		Showcoin1.setIcon(new ImageIcon("src/pic/blue.png"));
 	}
 	public static void turnBase2(){
 		player.setText("Player 2");
-		Showcoin2.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\red.png"));
-		Showcoin1.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\red.png"));
+		Showcoin2.setIcon(new ImageIcon("src/pic/red.png"));
+		Showcoin1.setIcon(new ImageIcon("src/pic/red.png"));
 	}
 
 	public static void gameStart(int btn,JFrame frame){
@@ -324,12 +324,12 @@ public class Game {
 				win = a;
 				if(player == 1){
 					board[btn-1][a] = 1;
-					coin[btn-1][a].setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\blue.png"));
+					coin[btn-1][a].setIcon(new ImageIcon("src/pic/blue.png"));
 					coin[btn-1][a].setVisible(true);
 				}
 				else if(player == 2){
 					board[btn-1][a] = 2;
-					coin[(btn-1)][a].setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\red.png"));
+					coin[(btn-1)][a].setIcon(new ImageIcon("src/pic/red.png"));
 					coin[btn-1][a].setVisible(true);
 				}
 				if(check[btn-1]>=5){
@@ -462,19 +462,19 @@ public class Game {
 	
 	public static void endGame(JFrame frame,int btn){
 		try{if(board[btn-1][win] == 1){
-			winpopup.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\player1.png"));
+			winpopup.setIcon(new ImageIcon("src/pic/player1.png"));
 		}}catch(ArrayIndexOutOfBoundsException exception){}
 		try{if(board[btn-1][win] == 2){
-			winpopup.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\player2.png"));
+			winpopup.setIcon(new ImageIcon("src/pic/player2.png"));
 		}}catch(ArrayIndexOutOfBoundsException exception){}
 		try{if(btn == 8){
-			winpopup.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\player1.png"));
+			winpopup.setIcon(new ImageIcon("src/pic/player1.png"));
 		}}catch(ArrayIndexOutOfBoundsException exception){}
 		try{if(btn == 9){
-			winpopup.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\player2.png"));
+			winpopup.setIcon(new ImageIcon("src/pic/player2.png"));
 		}}catch(ArrayIndexOutOfBoundsException exception){}
 		try{if(btn == 10){
-			winpopup.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\tie.png"));
+			winpopup.setIcon(new ImageIcon("src/pic/tie.png"));
 		}}catch(ArrayIndexOutOfBoundsException exception){}
 		winpopup.setVisible(true);
 		mainmenu.setVisible(true);

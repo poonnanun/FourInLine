@@ -48,14 +48,14 @@ public class Start {
 		frmFourInLine = new JFrame();
 		frmFourInLine.setResizable(false);
 		frmFourInLine.setTitle("Four In Line");
-		frmFourInLine.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\workspace\\FourInLine\\src\\pic\\Untitled-2.png"));
+		frmFourInLine.setIconImage(Toolkit.getDefaultToolkit().getImage("src/pic/Untitled-2.png"));
 		frmFourInLine.getContentPane().setBackground(Color.WHITE);
 		frmFourInLine.setBounds(100, 100, 1280, 720);
 		frmFourInLine.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmFourInLine.getContentPane().setLayout(null);
 		
 		JButton start = new JButton("");
-		start.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\startgame.png"));
+		start.setIcon(new ImageIcon("src/pic/startgame.png"));
 		start.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frmFourInLine.setVisible(false);
@@ -74,12 +74,12 @@ public class Start {
 				HowToPlay.howToPlay();
 			}
 		});
-		how.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\howtoplay.png"));
+		how.setIcon(new ImageIcon("src/pic/howtoplay.png"));
 		how.setBounds(540, 415, 200, 75);
 		frmFourInLine.getContentPane().add(how);
 		
 		JButton exit = new JButton("");
-		exit.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\exit1.png"));
+		exit.setIcon(new ImageIcon("src/pic/exit1.png"));
 		exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(1);
@@ -89,7 +89,7 @@ public class Start {
 		frmFourInLine.getContentPane().add(exit);
 		
 		JLabel background = new JLabel("New label");
-		background.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\StartMenu.png"));
+		background.setIcon(new ImageIcon("src/pic/StartMenu.png"));
 		background.setBounds(0, 0, 1274, 685);
 		frmFourInLine.getContentPane().add(background);
 	}

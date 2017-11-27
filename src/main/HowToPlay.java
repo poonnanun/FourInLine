@@ -52,12 +52,12 @@ public class HowToPlay {
 				Start.mainMenu();
 			}
 		});
-		btnNewButton.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\back.png"));
+		btnNewButton.setIcon(new ImageIcon("src/pic/back.png"));
 		btnNewButton.setBounds(30, 30, 50, 50);
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("D:\\workspace\\FourInLine\\src\\pic\\howto.png"));
+		lblNewLabel.setIcon(new ImageIcon("src/pic/howto.png"));
 		lblNewLabel.setBounds(0, 0, 1262, 673);
 		frame.getContentPane().add(lblNewLabel);
 	}
