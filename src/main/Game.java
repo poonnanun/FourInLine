@@ -122,7 +122,7 @@ public class Game {
 		round.setOpaque(false);
 		round.setForeground(Color.GRAY);
 		round.setFont(new Font("Showcard Gothic", Font.BOLD, 31));
-		round.setBounds(1027, 57, 117, 50);
+		round.setBounds(1027, 57, 145, 50);
 		frame.getContentPane().add(round);
 		
 		roundnum = new JTextPane();
@@ -130,7 +130,7 @@ public class Game {
 		roundnum.setOpaque(false);
 		roundnum.setForeground(Color.GRAY);
 		roundnum.setFont(new Font("Showcard Gothic", Font.BOLD, 31));
-		roundnum.setBounds(1145, 57, 50, 50);
+		roundnum.setBounds(1170, 57, 50, 50);
 		frame.getContentPane().add(roundnum);
 		
 		player = new JTextPane();
