@@ -21,16 +21,17 @@ import javax.swing.JTable;
 
 public class Game {
 	private JFrame frame;
-	private static JLabel Showcoin1 , Showcoin2;
-	private static JTextPane round , roundnum , player;
-	private static JButton drop1 , drop2 , drop3 , drop4 , drop5 , drop6 , drop7 , restart , mainmenu , back , surrender , result;
+	private static JLabel Showcoin1, Showcoin2;
+	private static JTextPane round, roundnum, player, wintxt;
+	private static JButton drop1, drop2, drop3, drop4, drop5, drop6, drop7, restart, mainmenu, back, surrender, result;
 	private static int[][] board = new int[7][6];
 	private static int[] check = new int[7];
 	private static int turn = 1;
 	private static JLabel[][] coin = new JLabel[7][6];
 	private static int win = 0;
 	private static JLabel winpopup;
-	private static int tie = 0;
+	private static int tie = 0, end = 0;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -48,9 +49,7 @@ public class Game {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
+//Design part
 	public Game() {
 		initialize();
 	}
@@ -97,6 +96,16 @@ public class Game {
 		restart.setBounds(450, 420, 150, 75);
 		frame.getContentPane().add(restart);
 		restart.setVisible(false);
+		
+		wintxt = new JTextPane();
+		wintxt.setText("win!!!");
+		wintxt.setOpaque(false);
+		wintxt.setForeground(Color.GRAY);
+		wintxt.setFont(new Font("Showcard Gothic", Font.BOLD, 31));
+		wintxt.setEditable(false);
+		wintxt.setBounds(581, 57, 120, 50);
+		wintxt.setVisible(false);
+		frame.getContentPane().add(wintxt);
 		
 		winpopup = new JLabel("");
 		winpopup.setIcon(new ImageIcon("src/pic/player1.png"));
@@ -147,6 +156,7 @@ public class Game {
 		frame.getContentPane().add(roundnum);
 		
 		player = new JTextPane();
+		player.setEditable(false);
 		player.setForeground(Color.GRAY);
 		player.setFont(new Font("Showcard Gothic", Font.BOLD, 31));
 		player.setOpaque(false);
@@ -304,6 +314,9 @@ public class Game {
 		background.setBounds(0, 0, 1274, 685);
 		frame.getContentPane().add(background);
 	}
+	
+	
+//Controller part
 	public static void turnBase1(){
 		player.setText("Player 1");
 		Showcoin2.setIcon(new ImageIcon("src/pic/blue.png"));
@@ -319,14 +332,18 @@ public class Game {
 			if(turn % 2 != 0){
 				int player = 1;
 				buttonClick(player,btn,frame);
-				turnBase2();
-				turn++;
+				if(end == 0){
+					turnBase2();
+					turn++;
+				}
 			}
 			else if(turn % 2 == 0){
 				int player = 2;
 				buttonClick(player,btn,frame);
-				turnBase1();
-				turn++;
+				if(end == 0){
+					turnBase1();
+					turn++;
+				}
 			}
 			roundnum.setText(""+turn);
 	}
@@ -372,112 +389,126 @@ public class Game {
 			check[a] = 0;
 		}
 		turn = 1;
+		end = 0;
 	}
 	
 	public static void winCheck(int btn , JFrame frame){
 		try{
 			if(board[btn-1][win] == board[btn][win]){
 				if(board[btn][win] == board[btn+1][win]){
-					if(board[btn+1][win] == board[btn+2][win]){
-						endGame(frame,btn);
-					}
-					else if(board[btn-1][win] == board[btn-2][win]){
-						endGame(frame,btn);
-					}
-				}
-			}
-		}catch(ArrayIndexOutOfBoundsException exception){}
-		try{
-			if(board[btn-1][win] == board[btn][win-1]){
-				if(board[btn][win-1] == board[btn+1][win-2]){
-					System.out.print(1);
-					if(board[btn+1][win-2] == board[btn+2][win-3]){
-						endGame(frame,btn);
-					}
-					else if(board[btn-1][win] == board[btn-2][win+1]){
-						endGame(frame,btn);
-					}
-				}
-			}
-		}catch(ArrayIndexOutOfBoundsException exception){}
-		try{
-			if(board[btn-1][win] == board[btn-1][win-1]){
-				if(board[btn-1][win-1] == board[btn-1][win-2]){
-					if(board[btn-1][win-2] == board[btn-1][win-3]){
-						endGame(frame,btn);
-					}
-					if(board[btn-1][win-2] == board[btn-1][win+1]){
-						endGame(frame,btn);
-					}
-				}
-			}
-		}catch(ArrayIndexOutOfBoundsException exception){}
-		try{
-			if(board[btn-1][win] == board[btn-2][win-1]){
-				if(board[btn-2][win-1] == board[btn-3][win-2]){
-					System.out.print(2);
-					if(board[btn-3][win-2] == board[btn-4][win-3]){
-						endGame(frame,btn);
-					}
-					else if(board[btn-3][win-2] == board[btn][win+1]){
-						endGame(frame,btn);
-					}
-				}
-			}
-		}catch(ArrayIndexOutOfBoundsException exception){}
-		try{
-			if(board[btn-1][win] == board[btn-2][win]){
-				if(board[btn-2][win] == board[btn-3][win]){
-					if(board[btn-3][win] == board[btn-4][win]){
-						endGame(frame,btn);
-					}
-					else if(board[btn-3][win] == board[btn][win]){
-						endGame(frame,btn);
-					}
-				}
-			}
-		}catch(ArrayIndexOutOfBoundsException exception){}
-		try{
-			if(board[btn-1][win] == board[btn-2][win+1]){		
-				if(board[btn-2][win+1] == board[btn-3][win+2]){
-					System.out.print(3);
-					if(board[btn-3][win+2] == board[btn-4][win+3]){
-						endGame(frame,btn);
-					}
-					else if(board[btn-1][win] == board[btn][win-1]){
-						endGame(frame,btn);
-					}
-				}
-			}
-		}catch(ArrayIndexOutOfBoundsException exception){}
-		try{
-			if(board[btn-1][win] == board[btn-1][win+1]){
-				if(board[btn-1][win+1] == board[btn-1][win+2]){
-					if(board[btn-1][win+2] == board[btn-1][win+3]){
-						endGame(frame,btn);
-					}
-					else if(board[btn-1][win+2] == board[btn-1][win-1]){
-						endGame(frame,btn);
-					}
+					try{
+						if(board[btn+1][win] == board[btn+2][win]){
+							endGame(frame,btn);
+						}}catch(ArrayIndexOutOfBoundsException exception){}
+					try{	
+						if(board[btn+1][win] == board[btn-2][win]){
+							endGame(frame,btn);
+						}}catch(ArrayIndexOutOfBoundsException exception){}
 				}
 			}
 		}catch(ArrayIndexOutOfBoundsException exception){}
 		try{
 			if(board[btn-1][win] == board[btn][win+1]){
 				if(board[btn][win+1] == board[btn+1][win+2]){
-					System.out.print(4);
-					if(board[btn+1][win+2] == board[btn+2][win+3]){
-						endGame(frame,btn);
-					}
-					if(board[btn+1][win+2] == board[btn-2][win-1]){
-						endGame(frame,btn);
-					}
+					try{
+						if(board[btn+1][win+2] == board[btn+2][win+3]){
+							endGame(frame,btn);
+						}}catch(ArrayIndexOutOfBoundsException exception){}
+					try{	
+						if(board[btn+1][win+2] == board[btn-2][win-1]){
+							endGame(frame,btn);
+						}}catch(ArrayIndexOutOfBoundsException exception){}
+				}
+			}
+		}catch(ArrayIndexOutOfBoundsException exception){}
+		try{
+			if(board[btn-1][win] == board[btn-1][win+1]){
+				if(board[btn-1][win+1] == board[btn-1][win+2]){
+					try{
+						if(board[btn-1][win+2] == board[btn-1][win+3]){
+							endGame(frame,btn);
+						}}catch(ArrayIndexOutOfBoundsException exception){}
+					try{	
+						if(board[btn-1][win+2] == board[btn-1][win-1]){
+							endGame(frame,btn);
+						}}catch(ArrayIndexOutOfBoundsException exception){}
+				}
+			}
+		}catch(ArrayIndexOutOfBoundsException exception){}
+		try{
+			if(board[btn-1][win] == board[btn-2][win+1]){
+				if(board[btn-2][win+1] == board[btn-3][win+2]){
+					try{
+						if(board[btn-3][win+2] == board[btn-4][win+3]){
+							endGame(frame,btn);
+						}}catch(ArrayIndexOutOfBoundsException exception){}
+					try{	
+						if(board[btn-3][win+2] == board[btn][win-1]){
+							endGame(frame,btn);
+						}}catch(ArrayIndexOutOfBoundsException exception){}
+				}
+			}
+		}catch(ArrayIndexOutOfBoundsException exception){}
+		try{
+			if(board[btn-1][win] == board[btn-2][win]){
+				if(board[btn-2][win] == board[btn-3][win]){
+					try{
+						if(board[btn-3][win] == board[btn-4][win]){
+							endGame(frame,btn);
+						}}catch(ArrayIndexOutOfBoundsException exception){}
+					try{	
+						if(board[btn-3][win] == board[btn][win]){
+							endGame(frame,btn);
+						}}catch(ArrayIndexOutOfBoundsException exception){}
+				}
+			}
+		}catch(ArrayIndexOutOfBoundsException exception){}
+		try{
+			if(board[btn-1][win] == board[btn-2][win-1]){		
+				if(board[btn-2][win-1] == board[btn-3][win-2]){
+					try{
+						if(board[btn-3][win-2] == board[btn-4][win-3]){
+							endGame(frame,btn);
+						}}catch(ArrayIndexOutOfBoundsException exception){}
+					try{	
+						if(board[btn-3][win-2] == board[btn][win+1]){
+							endGame(frame,btn);
+						}}catch(ArrayIndexOutOfBoundsException exception){}
+				}
+			}
+		}catch(ArrayIndexOutOfBoundsException exception){}
+		try{
+			if(board[btn-1][win] == board[btn-1][win-1]){
+				if(board[btn-1][win-1] == board[btn-1][win-2]){
+					try{
+						if(board[btn-1][win-2] == board[btn-1][win-3]){
+							endGame(frame,btn);
+						}}catch(ArrayIndexOutOfBoundsException exception){}
+					try{	
+						if(board[btn-1][win-2] == board[btn-1][win+1]){
+							endGame(frame,btn);
+						}}catch(ArrayIndexOutOfBoundsException exception){}
+				}
+			}
+		}catch(ArrayIndexOutOfBoundsException exception){}
+		try{
+			if(board[btn-1][win] == board[btn][win-1]){
+				if(board[btn][win-1] == board[btn+1][win-2]){
+					try{
+						if(board[btn+1][win-2] == board[btn+2][win-3]){
+							endGame(frame,btn);
+						}}catch(ArrayIndexOutOfBoundsException exception){}
+					try{	
+						if(board[btn+1][win-2] == board[btn-2][win+1]){
+							endGame(frame,btn);
+						}}catch(ArrayIndexOutOfBoundsException exception){}
 				}
 			}
 		}catch(ArrayIndexOutOfBoundsException exception){}
 	}
 	
 	public static void endGame(JFrame frame,int btn){
+		end = 1;
 		try{if(board[btn-1][win] == 1){
 			winpopup.setIcon(new ImageIcon("src/pic/player1.png"));
 		}}catch(ArrayIndexOutOfBoundsException exception){}
@@ -497,6 +528,8 @@ public class Game {
 		mainmenu.setVisible(true);
 		restart.setVisible(true);
 		result.setVisible(true);
+		back.setVisible(false);
+		surrender.setVisible(false);
 		frame.remove(drop1); drop1.setVisible(false);
 		frame.remove(drop2); drop2.setVisible(false);
 		frame.remove(drop3); drop3.setVisible(false);
@@ -511,7 +544,8 @@ public class Game {
 		mainmenu.setBounds(1070, 440, 150, 75);
 		restart.setBounds(1070, 530, 150, 75);
 		result.setVisible(false);
-		back.setVisible(false);
-		surrender.setVisible(false);
+		if(tie != 7){	
+			wintxt.setVisible(true);
+		}
 	}
 }
