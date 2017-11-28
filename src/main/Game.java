@@ -23,7 +23,7 @@ public class Game {
 	private JFrame frame;
 	private static JLabel Showcoin1 , Showcoin2;
 	private static JTextPane round , roundnum , player;
-	private static JButton drop1 , drop2 , drop3 , drop4 , drop5 , drop6 , drop7 , restart , mainmenu;
+	private static JButton drop1 , drop2 , drop3 , drop4 , drop5 , drop6 , drop7 , restart , mainmenu , back , surrender , result;
 	private static int[][] board = new int[7][6];
 	private static int[] check = new int[7];
 	private static int turn = 1;
@@ -71,9 +71,20 @@ public class Game {
 			}
 		});
 		mainmenu.setIcon(new ImageIcon("src/pic/exit.png"));
-		mainmenu.setBounds(680, 400, 150, 75);
+		mainmenu.setBounds(680, 420, 150, 75);
 		frame.getContentPane().add(mainmenu);
 		mainmenu.setVisible(false);
+		
+		result = new JButton("");
+		result.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				showResult(frame);
+			}
+		});
+		result.setIcon(new ImageIcon("src/pic/result.png"));
+		result.setBounds(550, 382, 180, 25);
+		frame.getContentPane().add(result);
+		result.setVisible(false);
 		
 		restart = new JButton("");
 		restart.addActionListener(new ActionListener() {
@@ -83,7 +94,7 @@ public class Game {
 			}
 		});
 		restart.setIcon(new ImageIcon("src/pic/restart.png"));
-		restart.setBounds(450, 400, 150, 75);
+		restart.setBounds(450, 420, 150, 75);
 		frame.getContentPane().add(restart);
 		restart.setVisible(false);
 		
@@ -118,6 +129,7 @@ public class Game {
 		frame.getContentPane().add(Showcoin2);
 		
 		round = new JTextPane();
+		round.setEditable(false);
 		round.setText("Round :");
 		round.setOpaque(false);
 		round.setForeground(Color.GRAY);
@@ -126,6 +138,7 @@ public class Game {
 		frame.getContentPane().add(round);
 		
 		roundnum = new JTextPane();
+		roundnum.setEditable(false);
 		roundnum.setText("1");
 		roundnum.setOpaque(false);
 		roundnum.setForeground(Color.GRAY);
@@ -142,7 +155,7 @@ public class Game {
 		player.setText("Player 1");
 		
 		
-		JButton back = new JButton("");
+		back = new JButton("");
 		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
@@ -153,7 +166,7 @@ public class Game {
 		back.setBounds(20, 20, 50, 50);
 		frame.getContentPane().add(back);
 		
-		JButton surrender = new JButton("");
+		surrender = new JButton("");
 		surrender.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(turn % 2 != 0){
@@ -377,6 +390,7 @@ public class Game {
 		try{
 			if(board[btn-1][win] == board[btn][win-1]){
 				if(board[btn][win-1] == board[btn+1][win-2]){
+					System.out.print(1);
 					if(board[btn+1][win-2] == board[btn+2][win-3]){
 						endGame(frame,btn);
 					}
@@ -401,6 +415,7 @@ public class Game {
 		try{
 			if(board[btn-1][win] == board[btn-2][win-1]){
 				if(board[btn-2][win-1] == board[btn-3][win-2]){
+					System.out.print(2);
 					if(board[btn-3][win-2] == board[btn-4][win-3]){
 						endGame(frame,btn);
 					}
@@ -423,12 +438,13 @@ public class Game {
 			}
 		}catch(ArrayIndexOutOfBoundsException exception){}
 		try{
-			if(board[btn-1][win] == board[btn-2][win+1]){
+			if(board[btn-1][win] == board[btn-2][win+1]){		
 				if(board[btn-2][win+1] == board[btn-3][win+2]){
+					System.out.print(3);
 					if(board[btn-3][win+2] == board[btn-4][win+3]){
 						endGame(frame,btn);
 					}
-					else if(board[btn-3][win+2] == board[btn][win-1]){
+					else if(board[btn-1][win] == board[btn][win-1]){
 						endGame(frame,btn);
 					}
 				}
@@ -449,6 +465,7 @@ public class Game {
 		try{
 			if(board[btn-1][win] == board[btn][win+1]){
 				if(board[btn][win+1] == board[btn+1][win+2]){
+					System.out.print(4);
 					if(board[btn+1][win+2] == board[btn+2][win+3]){
 						endGame(frame,btn);
 					}
@@ -479,6 +496,7 @@ public class Game {
 		winpopup.setVisible(true);
 		mainmenu.setVisible(true);
 		restart.setVisible(true);
+		result.setVisible(true);
 		frame.remove(drop1); drop1.setVisible(false);
 		frame.remove(drop2); drop2.setVisible(false);
 		frame.remove(drop3); drop3.setVisible(false);
@@ -486,5 +504,14 @@ public class Game {
 		frame.remove(drop5); drop5.setVisible(false);
 		frame.remove(drop6); drop6.setVisible(false);
 		frame.remove(drop7); drop7.setVisible(false);
+	}
+	
+	public static void showResult(JFrame frame){
+		winpopup.setVisible(false);
+		mainmenu.setBounds(1070, 440, 150, 75);
+		restart.setBounds(1070, 530, 150, 75);
+		result.setVisible(false);
+		back.setVisible(false);
+		surrender.setVisible(false);
 	}
 }
