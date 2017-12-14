@@ -23,14 +23,15 @@ public class Game {
 	private JFrame frame;
 	private static JLabel Showcoin1, Showcoin2;
 	private static JTextPane round, roundnum, player, wintxt;
-	private static JButton drop1, drop2, drop3, drop4, drop5, drop6, drop7, restart, mainmenu, back, surrender, result;
+	private static JButton drop1, drop2, drop3, drop4, drop5, drop6, drop7, restart, mainmenu, back, surrender, result, undo;
 	private static int[][] board = new int[7][6];
 	private static int[] check = new int[7];
+	private static int[] undotemp = new int[3];
 	private static int turn = 1;
 	private static JLabel[][] coin = new JLabel[7][6];
 	private static int win = 0;
 	private static JLabel winpopup;
-	private static int tie = 0, end = 0;
+	private static int tie = 0, end = 0 , surrendered = 0;
 	
 	/**
 	 * Launch the application.
@@ -176,6 +177,17 @@ public class Game {
 		back.setBounds(20, 20, 50, 50);
 		frame.getContentPane().add(back);
 		
+		undo = new JButton("");
+		undo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				undoRound(frame);
+			}
+		});
+		undo.setIcon(new ImageIcon("src/pic/undo.png"));
+		undo.setBounds(20, 180, 100, 50);
+		undo.setVisible(false);
+		frame.getContentPane().add(undo);
+		
 		surrender = new JButton("");
 		surrender.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -188,7 +200,7 @@ public class Game {
 			}
 		});
 		surrender.setIcon(new ImageIcon("src/pic/surrender.png"));
-		surrender.setBounds(20, 108, 180, 50);
+		surrender.setBounds(20, 100, 180, 50);
 		frame.getContentPane().add(surrender);
 		
 		drop1 = new JButton("");
@@ -329,6 +341,7 @@ public class Game {
 	}
 
 	public static void gameStart(int btn,JFrame frame){
+		
 			if(turn % 2 != 0){
 				int player = 1;
 				buttonClick(player,btn,frame);
@@ -356,23 +369,31 @@ public class Game {
 					board[btn-1][a] = 1;
 					coin[btn-1][a].setIcon(new ImageIcon("src/pic/blue.png"));
 					coin[btn-1][a].setVisible(true);
+					undotemp[0] = btn-1;
+					undotemp[1] = a;
 				}
 				else if(player == 2){
 					board[btn-1][a] = 2;
-					coin[(btn-1)][a].setIcon(new ImageIcon("src/pic/red.png"));
+					coin[btn-1][a].setIcon(new ImageIcon("src/pic/red.png"));
 					coin[btn-1][a].setVisible(true);
+					undotemp[0] = btn-1;
+					undotemp[1] = a;
 				}
 				if(check[btn-1]>=5){
 					switch(btn){
-						case 1:	frame.remove(drop1); drop1.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} return;
-						case 2:	frame.remove(drop2); drop2.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} return;
-						case 3: frame.remove(drop3); drop3.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} return;
-						case 4: frame.remove(drop4); drop4.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} return;
-						case 5: frame.remove(drop5); drop5.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} return;
-						case 6: frame.remove(drop6); drop6.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} return;
-						case 7: frame.remove(drop7); drop7.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} return;
+						case 1:	frame.remove(drop1); drop1.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; return;
+						case 2:	frame.remove(drop2); drop2.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; return;
+						case 3: frame.remove(drop3); drop3.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; return;
+						case 4: frame.remove(drop4); drop4.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; return;
+						case 5: frame.remove(drop5); drop5.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; return;
+						case 6: frame.remove(drop6); drop6.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; return;
+						case 7: frame.remove(drop7); drop7.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; return;
 					}
 				}
+				else{
+					undotemp[2] = 0;
+				}
+				undo.setVisible(true);
 				winCheck(btn,frame);
 				return;
 			}
@@ -392,6 +413,22 @@ public class Game {
 		end = 0;
 	}
 	
+	public static void undoRound(JFrame frame){
+		board[undotemp[0]][undotemp[1]] = 0;
+		coin[undotemp[0]][undotemp[1]].setVisible(false);
+		turn--;
+		roundnum.setText(""+turn);
+		if(turn % 2 != 0){
+			turnBase1();
+		}
+		else{
+			turnBase2();
+		}
+		if(undotemp[2] == 1){
+			tie--;
+		}
+		undo.setVisible(false);
+	}
 	public static void winCheck(int btn , JFrame frame){
 		try{
 			if(board[btn-1][win] == board[btn][win]){
@@ -517,9 +554,11 @@ public class Game {
 		}}catch(ArrayIndexOutOfBoundsException exception){}
 		try{if(btn == 8){
 			winpopup.setIcon(new ImageIcon("src/pic/player1.png"));
+			surrendered = 1;
 		}}catch(ArrayIndexOutOfBoundsException exception){}
 		try{if(btn == 9){
 			winpopup.setIcon(new ImageIcon("src/pic/player2.png"));
+			surrendered = 1;
 		}}catch(ArrayIndexOutOfBoundsException exception){}
 		try{if(btn == 10){
 			winpopup.setIcon(new ImageIcon("src/pic/tie.png"));
@@ -530,6 +569,7 @@ public class Game {
 		result.setVisible(true);
 		back.setVisible(false);
 		surrender.setVisible(false);
+		undo.setVisible(false);
 		frame.remove(drop1); drop1.setVisible(false);
 		frame.remove(drop2); drop2.setVisible(false);
 		frame.remove(drop3); drop3.setVisible(false);
@@ -540,11 +580,16 @@ public class Game {
 	}
 	
 	public static void showResult(JFrame frame){
+		undo.setVisible(false);
 		winpopup.setVisible(false);
 		mainmenu.setBounds(1070, 440, 150, 75);
 		restart.setBounds(1070, 530, 150, 75);
 		result.setVisible(false);
 		if(tie != 7){	
+			if(surrendered == 1){
+				wintxt.setText("Surrendered!!!");
+				wintxt.setBounds(495, 70, 290, 50);
+			}
 			wintxt.setVisible(true);
 		}
 	}

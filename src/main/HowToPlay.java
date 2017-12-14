@@ -9,13 +9,15 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * This is a interface that show how to play
+ * @author Ou's PC
+ *
+ */
 public class HowToPlay {
 
 	private JFrame frame;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void howToPlay() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -29,16 +31,12 @@ public class HowToPlay {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
+
 	public HowToPlay() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1280, 720);

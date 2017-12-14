@@ -28,9 +28,7 @@ public class Start {
 	public static void main(String[] args){
 		mainMenu();
 	}
-	/**
-	 * Launch the application.
-	 */
+
 	public static void mainMenu() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -44,16 +42,11 @@ public class Start {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
+
 	public Start() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frmFourInLine = new JFrame();
 		frmFourInLine.setResizable(false);
