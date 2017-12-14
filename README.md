@@ -12,4 +12,4 @@ This application is a four in line game or in the other name is connection four.
 
 ![Gameplay](src/ReadmePic/Game.png)
 
-![How to play](src/ReadmePic/Howtoplay.png)
+![How to play](src/ReadmePic/HowTo.png)
