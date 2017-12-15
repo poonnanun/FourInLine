@@ -8,7 +8,7 @@ This application is a four in line game or in the other name is connection four.
   This application is about droping coins in to the grid or board if one of two player who can connect the 4 coins togeter they win. I made this application by using java and swing framework, I use loop and if/else to check the condition and I use the swing framework to create the gui. The picture I almost all picture I draw by myself except the background.
 ## Get this game:
 #### Download
-Click [here](https://github.com/poonnanun/FourInLine/releases/download/v1.0/FourInLine-1.0.zip) to download latest version.
+Click [here](https://github.com/poonnanun/FourInLine/releases/download/v1.1/FourInLine.rar) to download latest version.
 #### installation
 Extract zip file then run by clicking FourInLine.jar to start game.
 ## Program
