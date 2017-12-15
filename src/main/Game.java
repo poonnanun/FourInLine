@@ -27,6 +27,7 @@ public class Game {
 	private static int[][] board = new int[7][6];
 	private static int[] check = new int[7];
 	private static int[] undotemp = new int[3];
+	private static int ignoreme = 0;
 	private static int turn = 1;
 	private static JLabel[][] coin = new JLabel[7][6];
 	private static int win = 0;
@@ -208,9 +209,9 @@ public class Game {
 			public void actionPerformed(ActionEvent e) {
 				gameStart(1,frame);
 				check[0]++;
+				ignoreme = 0;
 			}
 		});
-		
 		drop1.setContentAreaFilled(false);
 		drop1.setFocusPainted(false);
 		drop1.setBorderPainted(false);
@@ -225,6 +226,7 @@ public class Game {
 			public void actionPerformed(ActionEvent e) {
 				gameStart(2,frame);
 				check[1]++;
+				ignoreme = 1;
 			}
 		});
 		drop2.setContentAreaFilled(false);
@@ -241,6 +243,7 @@ public class Game {
 			public void actionPerformed(ActionEvent e) {
 				gameStart(3,frame);
 				check[2]++;
+				ignoreme = 2;
 			}
 		});
 		drop3.setContentAreaFilled(false);
@@ -257,6 +260,7 @@ public class Game {
 			public void actionPerformed(ActionEvent e) {
 				gameStart(4,frame);
 				check[3]++;
+				ignoreme = 3;
 			}
 		});
 		drop4.setContentAreaFilled(false);
@@ -273,6 +277,7 @@ public class Game {
 			public void actionPerformed(ActionEvent e) {
 				gameStart(5,frame);
 				check[4]++;
+				ignoreme = 4;
 			}
 		});
 		drop5.setContentAreaFilled(false);
@@ -289,6 +294,7 @@ public class Game {
 			public void actionPerformed(ActionEvent e) {
 				gameStart(6,frame);
 				check[5]++;
+				ignoreme = 5;
 			}
 		});
 		drop6.setContentAreaFilled(false);
@@ -305,6 +311,7 @@ public class Game {
 			public void actionPerformed(ActionEvent e) {
 				gameStart(7,frame);
 				check[6]++;
+				ignoreme = 6;
 			}
 		});
 		drop7.setContentAreaFilled(false);
@@ -381,13 +388,13 @@ public class Game {
 				}
 				if(check[btn-1]>=5){
 					switch(btn){
-						case 1:	frame.remove(drop1); drop1.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; return;
-						case 2:	frame.remove(drop2); drop2.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; return;
-						case 3: frame.remove(drop3); drop3.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; return;
-						case 4: frame.remove(drop4); drop4.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; return;
-						case 5: frame.remove(drop5); drop5.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; return;
-						case 6: frame.remove(drop6); drop6.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; return;
-						case 7: frame.remove(drop7); drop7.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; return;
+						case 1:	drop1.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; return;
+						case 2:	drop2.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 2; return;
+						case 3: drop3.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 3; return;
+						case 4: drop4.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 4; return;
+						case 5: drop5.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 5; return;
+						case 6: drop6.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 6; return;
+						case 7: drop7.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 7; return;
 					}
 				}
 				else{
@@ -424,9 +431,17 @@ public class Game {
 		else{
 			turnBase2();
 		}
-		if(undotemp[2] == 1){
-			tie--;
+		switch(undotemp[2]){
+			case 1: tie--; drop1.setVisible(true); break;
+			case 2: tie--; drop2.setVisible(true); break;
+			case 3: tie--; drop3.setVisible(true); break;
+			case 4: tie--; drop4.setVisible(true); break;
+			case 5: tie--; drop5.setVisible(true); break;
+			case 6: tie--; drop6.setVisible(true); break;
+			case 7: tie--; drop7.setVisible(true); break;
+			default: break;
 		}
+		check[ignoreme]--;
 		undo.setVisible(false);
 	}
 	public static void winCheck(int btn , JFrame frame){
