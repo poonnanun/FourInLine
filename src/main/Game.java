@@ -388,13 +388,13 @@ public class Game {
 				}
 				if(check[btn-1]>=5){
 					switch(btn){
-						case 1:	drop1.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; return;
-						case 2:	drop2.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 2; return;
-						case 3: drop3.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 3; return;
-						case 4: drop4.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 4; return;
-						case 5: drop5.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 5; return;
-						case 6: drop6.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 6; return;
-						case 7: drop7.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 7; return;
+						case 1:	drop1.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 1; undo.setVisible(true); return;
+						case 2:	drop2.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 2; undo.setVisible(true); return;
+						case 3: drop3.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 3; undo.setVisible(true); return;
+						case 4: drop4.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 4; undo.setVisible(true); return;
+						case 5: drop5.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 5; undo.setVisible(true); return;
+						case 6: drop6.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 6; undo.setVisible(true); return;
+						case 7: drop7.setVisible(false); tie++; if(tie == 7){endGame(frame,10);} undotemp[2] = 7; undo.setVisible(true); return;
 					}
 				}
 				else{
